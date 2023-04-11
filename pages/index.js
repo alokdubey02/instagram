@@ -2,12 +2,13 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Header from '@/components/Header'
+import Feed from '@/components/Feed'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-       <div>
+       <div className='bg-gray-50 min-h-screen'>
           <Head>
           <title>Instagram App</title>
           <meta name="description" content="Instagram"/>
@@ -20,7 +21,7 @@ export default function Home() {
 
           {/* {Feed} */}
 
-          
+          <Feed/>
 
           {/* {Modal} */}
           
