@@ -22,6 +22,32 @@ export default function Posts() {
             userImg:"alok_image.jpg",
             img:"https://source.unsplash.com/900x900/?girl,water",
             caption: "Thanks for "
+        },
+         {
+            id:"4",
+            username:"Sintu",
+            userImg:"alok_image.jpg",
+            img:"https://source.unsplash.com/900x900/?girl,hot",
+            caption: "Nice picture "
+        },  {
+            id:"5",
+            username:"Shukla",
+            userImg:"alok_image.jpg",
+            img:"https://source.unsplash.com/900x900/?girl,swim",
+            caption: "Thanks for "
+        },
+         {
+            id:"6",
+            username:"Singh",
+            userImg:"alok_image.jpg",
+            img:"https://source.unsplash.com/900x900/?girl,bike",
+            caption: "Nice picture "
+        },  {
+            id:"7",
+            username:"Aditya",
+            userImg:"alok_image.jpg",
+            img:"https://source.unsplash.com/900x900/?girl,beach",
+            caption: "Thanks for "
         }
     ]
   return (
