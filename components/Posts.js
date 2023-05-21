@@ -1,62 +1,31 @@
-import React from 'react'
+import { db } from '@/firebase';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
 import Post from './Post'
 
 export default function Posts() {
-    const posts = [
-        {
-            id:"1",
-            username:"Kumar",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?nature,girl",
-            caption: "Thanks for "
-        } ,
-         {
-            id:"2",
-            username:"Alok",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?girl,fitness",
-            caption: "Nice picture "
-        },  {
-            id:"3",
-            username:"Dubey",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?girl,water",
-            caption: "Thanks for "
-        },
-         {
-            id:"4",
-            username:"Sintu",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?girl,hot",
-            caption: "Nice picture "
-        },  {
-            id:"5",
-            username:"Shukla",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?girl,swim",
-            caption: "Thanks for "
-        },
-         {
-            id:"6",
-            username:"Singh",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?girl,bike",
-            caption: "Nice picture "
-        },  {
-            id:"7",
-            username:"Aditya",
-            userImg:"alok_image.jpg",
-            img:"https://source.unsplash.com/900x900/?girl,beach",
-            caption: "Thanks for "
-        }
-    ]
-  return (
+
+    const [posts, setPosts] = useState([]);
+    useEffect(()=> {
+        const unsubscribe = onSnapshot(
+            query(collection(db, "posts"), orderBy(("timestamp"), "desc")), (snapshot)=>{
+                setPosts(snapshot.docs);
+            }
+        );
+        return unsubscribe;
+    })
+
+    return (
     <div>
         
         {posts.map(post=>(
             <Post 
-                key={post.id} id={post.id} username={post.username}
-                userImg={post.userImg} img={post.img} caption={post.caption}
+                key={post.id} 
+                id={post.id} 
+                username={post.data().username}
+                userImg={post.data().profileImg} 
+                img={post.data().image} 
+                caption={post.data().caption}
             />
         ))}
 
