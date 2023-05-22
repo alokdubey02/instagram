@@ -85,7 +85,11 @@ export default function Post({img,userImg,caption,username,id}) {
 
         {/* {Post comments} */}
 
-        <p className='p-5 truncate'><span className='font-bold mr-2'>{username}</span>{caption}</p>
+        <p className='p-5 truncate'>
+            {likes.length > 0 && (
+                <p className='font-bold mb-1'>{likes.length} likes</p>
+            )}
+            <span className='font-bold mr-2'>{username}</span>{caption}</p>
         {comments.length>0 &&(
             <div className="mx-10 max-h-24 overflow-y-scroll scrollbar-none">
                     {comments.map(comment =>(
